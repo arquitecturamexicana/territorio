@@ -1,3 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Título del Mapa</title>
+  <style>
+    /* Barra superior */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: #111;
+      color: #fff;
+      padding: 10px 20px;
+      font-family: Arial, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 9999;
+    }
+
+    .navbar img {
+      height: 30px;
+    }
+
+    .navbar a {
+      color: #fff;
+      text-decoration: none;
+      margin-left: 15px;
+      font-size: 14px;
+    }
+
+    .navbar a:hover {
+      text-decoration: underline;
+    }
+
+    /* Para que el mapa no quede escondido debajo de la barra */
+    body {
+      margin: 0;
+      padding-top: 60px; /* Ajusta según la altura de la navbar */
+    }
+  </style>
+</head>
+<body>
+  <!-- Barra de navegación -->
+  <div class="navbar">
+    <div>
+      <img src="https://arquitecturamexicana.mx/logo.png" alt="Arquitectura Mexicana"> 
+      <!-- pon la URL real de tu logo -->
+    </div>
+    <div>
+      <a href="https://arquitecturamexicana.github.io/territorio/">Explorar más mapas</a>
+    </div>
+  </div>
+
 <!doctype html>
 <html lang="en">
     <head>
@@ -586,4 +643,7 @@
         setBounds();
         </script>
     </body>
+</html>
+  <div id="map"></div>
+</body>
 </html>
