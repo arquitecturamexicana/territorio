@@ -1,8 +1,8 @@
-
 <!doctype html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
+	  	<title>Cuenca hidrográfica del Valle de México</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
         <meta name="mobile-web-app-capable" content="yes">
@@ -23,32 +23,80 @@
         }
         </style>
         <title></title>
-		<!-- Header -->
-<header style="background-color:#fff; height:100px; display:flex; align-items:center; justify-content:space-between; padding:0 20px; box-shadow:0 2px 4px rgba(0,0,0,0.1);">
+	 </head>
+<head>
+  <meta charset="utf-8" />
+  <title>Arquitectura Mexicana | Proyecto Territorio</title>
   
-  <!-- Logo -->
-  <div style="flex:1; display:flex; align-items:center;">
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" 
+        href="https://static.wixstatic.com/media/2abcf9_dd72a489711648248805a07ac90c3e64~mv2.png/v1/fill/w_150,h_150,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/2abcf9_dd72a489711648248805a07ac90c3e64~mv2.png">
+  
+  <link rel="stylesheet" href="leaflet.css" />
+  <script src="leaflet.js"></script>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    /* Header fijo */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background-color: #fff;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    header img {
+      height: 31px;
+      width: 89px;
+    }
+    header a {
+      text-decoration: none;
+      color: #000;
+      font-weight: 600;
+      font-size: 14px;
+    }
+    /* Subheader */
+    .subheader {
+      height: 50px;
+      background-color: #f9f9f9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      font-weight: 600;
+      color: #000;
+      border-bottom: 1px solid #e0e0e0;
+    }
+    /* Ajustar mapa para que no quede detrás del header */
+    #map {
+      height: calc(100vh - 120px); /* 70px header + 50px subheader */
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <!-- Logo -->
     <img src="https://static.wixstatic.com/media/2abcf9_52cc6cb3f51546bcb98d31b065c11332~mv2.png/v1/crop/x_0,y_265,w_800,h_270/fill/w_89,h_30,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/arquitecturamexicana_mx.png" 
-         alt="Arquitectura Mexicana" 
-         style="height:50px;">
-  </div>
+         alt="Arquitectura Mexicana">
 
-  <!-- Title -->
-  <div style="flex:2; text-align:center; font-size:20px; font-weight:600; color:#000;">
-    Proyecto Territorio
-  </div>
-
-  <!-- Button -->
-  <div style="flex:1; display:flex; justify-content:flex-end;">
-    <a href="https://arquitecturamexicana.github.io/territorio/" 
-       style="background-color:#000; color:#fff; padding:10px 15px; border-radius:6px; text-decoration:none; font-size:14px; font-weight:500;">
-       Explorar mapas en el territorio
-    </a>
-  </div>
-</header>
-
-    </head>
-    <body>
+    <!-- Link -->
+    <a href="https://www.arquitecturamexicana.mx/territorio">territorio</a>
+  </header>
+	
+  <!-- Subheader -->
+  <div class="subheader">
+    Cuenca hidrográfica del Valle de México
+	  
         <div id="map">
         </div>
         <script src="js/qgis2web_expressions.js"></script>
