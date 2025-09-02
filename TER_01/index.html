@@ -21,6 +21,83 @@
         <title></title>
     </head>
     <body>
+		<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eje Neovolcánico Transversal – Arquitectura Mexicana</title>
+  <link rel="icon" type="image/png" href="https://static.wixstatic.com/media/2abcf9_dd72a489711648248805a07ac90c3e64~mv2.png/v1/fill/w_150,h_150,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/2abcf9_dd72a489711648248805a07ac90c3e64~mv2.png">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: "Futura", "Arial", sans-serif;
+    }
+
+    /* HEADER PRINCIPAL */
+    header {
+      position: sticky;
+      top: 0;
+      height: 70px;
+      background-color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+      border-bottom: 1px solid #ddd;
+      z-index: 1000;
+    }
+
+    header img {
+      height: 40px;
+    }
+
+    header .territorio {
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    /* SUBHEADER */
+    .subheader {
+      position: sticky;
+      top: 70px; /* debajo del header */
+      height: 50px;
+      background-color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+      font-weight: bold;
+      font-size: 16px;
+      border-bottom: 1px solid #ddd;
+      z-index: 999;
+    }
+
+    .subheader a {
+      text-decoration: none;
+      color: black;
+      font-weight: bold;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header>
+    <div class="logo">
+      <img src="https://static.wixstatic.com/media/2abcf9_52cc6cb3f51546bcb98d31b065c11332~mv2.png/v1/crop/x_0,y_265,w_800,h_270/fill/w_89,h_30,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/arquitecturamexicana_mx.png" alt="Logo">
+    </div>
+    <div class="territorio">Territorio</div>
+  </header>
+
+  <!-- SUBHEADER -->
+  <div class="subheader">
+    <div class="subheader-left">
+      Eje Neovolcánico Transversal
+    </div>
+    <div class="subheader-right">
+      <a href="https://www.arquitecturamexicana.mx/mapas/eje-" target="_blank">Volver a perfil</a>
+    </div>
+  </div>
         <div id="map">
         </div>
         <script src="js/qgis2web_expressions.js"></script>
