@@ -6,6 +6,10 @@
         <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
         <meta name="mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-capable" content="yes">
+
+        <title>Atlas Escolar</title>
+        <link rel="icon" type="image/png" href="https://static.wixstatic.com/media/2abcf9_dd72a489711648248805a07ac90c3e64~mv2.png/v1/fill/w_318,h_180,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/arquitecturamexicana_mx.png">
+
         <link rel="stylesheet" href="css/leaflet.css">
         <link rel="stylesheet" href="css/L.Control.Layers.Tree.css">
         <link rel="stylesheet" href="css/L.Control.Locate.min.css">
@@ -14,60 +18,75 @@
         <link rel="stylesheet" href="css/leaflet-control-geocoder.Geocoder.css">
         <link rel="stylesheet" href="css/leaflet-measure.css">
         <style>
-			.page-header {
-    width: 100%;
-    height: 60px; /* Altura del encabezado */
-    background-color: #fff; /* Color de fondo */
-    display: flex;
-    justify-content: space-between; /* Alinea los elementos a los extremos */
-    align-items: center; /* Centra verticalmente */
-    padding: 0 20px; /* Espaciado a los lados */
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Sombra sutil */
-    box-sizing: border-box;
-}
+            html, body, #map {
+                width: 100%;
+                height: 100%;
+                padding: 0;
+                margin: 0;
+            }
 
-.header-left .logo-text {
-    font-size: 24px;
-    font-weight: 700;
-    color: #333; /* Color del texto del logo */
-    text-decoration: none;
-}
+            /* Estilos del Encabezado */
+            .main-header {
+                width: 100%;
+                height: 70px;
+                background-color: #fff;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 0 20px;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+                box-sizing: border-box;
+                position: sticky;
+                top: 0;
+                z-index: 1000;
+            }
 
-.header-right .header-link {
-    font-size: 16px;
-    color: #555;
-    text-decoration: none;
-    padding: 5px 10px;
-}
+            .main-header .logo-image {
+                height: 31px;
+                width: 89px;
+            }
 
-.header-right .header-link:hover {
-    color: #000;
-    text-decoration: underline;
-}
+            .main-header .header-link {
+                font-size: 16px;
+                color: #555;
+                text-decoration: none;
+                padding: 5px 10px;
+            }
 
-#map {
-    height: calc(100% - 60px); /* Ajusta la altura del mapa para que no se superponga con el encabezado */
-}
-        html, body, #map {
-            width: 100%;
-            height: 100%;
-            padding: 0;
-            margin: 0;
-        }
+            /* Estilos del Subencabezado */
+            .subheader {
+                width: 100%;
+                height: 50px;
+                background-color: #fff;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+                box-sizing: border-box;
+                font-family: Arial, sans-serif;
+                font-weight: bold;
+                text-align: center;
+                z-index: 999;
+            }
+
+            /* Ajuste de altura del mapa */
+            #map {
+                height: calc(100% - 120px);
+            }
         </style>
-        <title></title>
     </head>
     <body>
-		<header class="page-header">
-    <div class="header-left">
-        <a href="#" class="logo-link">
-            <span class="logo-text">Atlas Escolar</span>
-        </a>
-    </div>
-    <div class="header-right">
-        <a href="#" class="header-link">Territorio</a>
-    </div>
-</header>
+        <header class="main-header">
+            <a href="https://www.arquitecturamexicana.mx/atlas-escolar" class="logo-link">
+                <img src="https://static.wixstatic.com/media/2abcf9_52cc6cb3f51546bcb98d31b065c11332~mv2.png/v1/crop/x_0,y_265,w_800,h_270/fill/w_89,h_30,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/arquitecturamexicana_mx.png" alt="Logo de Arquitectura Mexicana" class="logo-image">
+            </a>
+            <a href="https://www.arquitecturamexicana.mx/territorio" class="header-link">territorio</a>
+        </header>
+
+        <div class="subheader">
+            <h2>Eje Neovolcánico Transversal</h2>
+        </div>
+
         <div id="map">
         </div>
         <script src="js/qgis2web_expressions.js"></script>
@@ -83,7 +102,7 @@
         <script src="js/labels.js"></script>
         <script src="js/leaflet-control-geocoder.Geocoder.js"></script>
         <script src="js/leaflet-measure.js"></script>
-        <script src="data/AtlasEscolar_1.js"></script>
+        <script src="data/Cuencahidrogrfica_1.js"></script>
         <script>
         var highlightLayer;
         function highlightFeature(e) {
@@ -92,7 +111,7 @@
         }
         var map = L.map('map', {
             zoomControl:false, maxZoom:28, minZoom:1
-        }).fitBounds([[19.396044305357506,-99.20143717204127],[19.51661369951664,-99.02162745421788]]);
+        }).fitBounds([[19.035667944497277,-99.76956905918424],[19.9998432242746,-98.03950799039704]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -154,7 +173,7 @@
         });
         layer_GoogleSatellite_0;
         map.addLayer(layer_GoogleSatellite_0);
-        function pop_AtlasEscolar_1(feature, layer) {
+        function pop_Cuencahidrogrfica_1(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     if (typeof layer.closePopup == 'function') {
@@ -169,133 +188,64 @@
             });
             var popupContent = '<table>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(String(feature.properties['fid']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['ID'] !== null ? autolinker.link(String(feature.properties['ID']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(String(feature.properties['id']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['CVE_SUBC'] !== null ? autolinker.link(String(feature.properties['CVE_SUBC']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['clee'] !== null ? autolinker.link(String(feature.properties['clee']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['CLAVE50K'] !== null ? autolinker.link(String(feature.properties['CLAVE50K']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['nom_estab'] !== null ? autolinker.link(String(feature.properties['nom_estab']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['TIPO'] !== null ? autolinker.link(String(feature.properties['TIPO']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['raz_social'] !== null ? autolinker.link(String(feature.properties['raz_social']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['ENTIDAD'] !== null ? autolinker.link(String(feature.properties['ENTIDAD']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['codigo_act'] !== null ? autolinker.link(String(feature.properties['codigo_act']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['FC'] !== null ? autolinker.link(String(feature.properties['FC']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['nombre_act'] !== null ? autolinker.link(String(feature.properties['nombre_act']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['CONDICION'] !== null ? autolinker.link(String(feature.properties['CONDICION']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['per_ocu'] !== null ? autolinker.link(String(feature.properties['per_ocu']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['EDICION'] !== null ? autolinker.link(String(feature.properties['EDICION']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['tipo_vial'] !== null ? autolinker.link(String(feature.properties['tipo_vial']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['FECHA'] !== null ? autolinker.link(String(feature.properties['FECHA']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['nom_vial'] !== null ? autolinker.link(String(feature.properties['nom_vial']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['LENGTHM'] !== null ? autolinker.link(String(feature.properties['LENGTHM']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['tipo_v_e_1'] !== null ? autolinker.link(String(feature.properties['tipo_v_e_1']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['ID_DRENA'] !== null ? autolinker.link(String(feature.properties['ID_DRENA']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['nom_v_e_1'] !== null ? autolinker.link(String(feature.properties['nom_v_e_1']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['FLOWDIR'] !== null ? autolinker.link(String(feature.properties['FLOWDIR']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['tipo_v_e_2'] !== null ? autolinker.link(String(feature.properties['tipo_v_e_2']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['ENABLED'] !== null ? autolinker.link(String(feature.properties['ENABLED']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['nom_v_e_2'] !== null ? autolinker.link(String(feature.properties['nom_v_e_2']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['DESC_ENABL'] !== null ? autolinker.link(String(feature.properties['DESC_ENABL']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['tipo_v_e_3'] !== null ? autolinker.link(String(feature.properties['tipo_v_e_3']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['CALI_REPR'] !== null ? autolinker.link(String(feature.properties['CALI_REPR']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['nom_v_e_3'] !== null ? autolinker.link(String(feature.properties['nom_v_e_3']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['SEQUENCEID'] !== null ? autolinker.link(String(feature.properties['SEQUENCEID']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['numero_ext'] !== null ? autolinker.link(String(feature.properties['numero_ext']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['ORDER_1'] !== null ? autolinker.link(String(feature.properties['ORDER_1']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['letra_ext'] !== null ? autolinker.link(String(feature.properties['letra_ext']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['LEVEL_1'] !== null ? autolinker.link(String(feature.properties['LEVEL_1']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['edificio'] !== null ? autolinker.link(String(feature.properties['edificio']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['ARBSUM_1'] !== null ? autolinker.link(String(feature.properties['ARBSUM_1']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['edificio_e'] !== null ? autolinker.link(String(feature.properties['edificio_e']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['numero_int'] !== null ? autolinker.link(String(feature.properties['numero_int']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['letra_int'] !== null ? autolinker.link(String(feature.properties['letra_int']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['tipo_asent'] !== null ? autolinker.link(String(feature.properties['tipo_asent']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['nomb_asent'] !== null ? autolinker.link(String(feature.properties['nomb_asent']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['tipoCenCom'] !== null ? autolinker.link(String(feature.properties['tipoCenCom']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['nom_CenCom'] !== null ? autolinker.link(String(feature.properties['nom_CenCom']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['num_local'] !== null ? autolinker.link(String(feature.properties['num_local']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['cod_postal'] !== null ? autolinker.link(String(feature.properties['cod_postal']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['cve_ent'] !== null ? autolinker.link(String(feature.properties['cve_ent']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['entidad'] !== null ? autolinker.link(String(feature.properties['entidad']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['cve_mun'] !== null ? autolinker.link(String(feature.properties['cve_mun']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['municipio'] !== null ? autolinker.link(String(feature.properties['municipio']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['cve_loc'] !== null ? autolinker.link(String(feature.properties['cve_loc']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['localidad'] !== null ? autolinker.link(String(feature.properties['localidad']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['ageb'] !== null ? autolinker.link(String(feature.properties['ageb']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['manzana'] !== null ? autolinker.link(String(feature.properties['manzana']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['telefono'] !== null ? autolinker.link(String(feature.properties['telefono']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['correoelec'] !== null ? autolinker.link(String(feature.properties['correoelec']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['www'] !== null ? autolinker.link(String(feature.properties['www']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['tipoUniEco'] !== null ? autolinker.link(String(feature.properties['tipoUniEco']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['latitud'] !== null ? autolinker.link(String(feature.properties['latitud']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['longitud'] !== null ? autolinker.link(String(feature.properties['longitud']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['fecha_alta'] !== null ? autolinker.link(String(feature.properties['fecha_alta']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['PATHL_1'] !== null ? autolinker.link(String(feature.properties['PATHL_1']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             var content = removeEmptyRowsFromPopupContent(popupContent, feature);
@@ -305,393 +255,89 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_AtlasEscolar_1_0(feature) {
-            switch(String(feature.properties['nombre_act'])) {
-                case 'Escuelas comerciales y secretariales del sector privado':
+        function style_Cuencahidrogrfica_1_0(feature) {
+            switch(String(feature.properties['CONDICION'])) {
+                case 'EN OPERACION':
                     return {
-                pane: 'pane_AtlasEscolar_1',
-                radius: 2.0000000000000004,
-                stroke: false,
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(215,25,28,1.0)',
+                pane: 'pane_Cuencahidrogrfica_1',
+                opacity: 1,
+                color: 'rgba(8,48,107,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 3.0,
+                fillOpacity: 0,
                 interactive: true,
             }
                     break;
-                case 'Escuelas de arte del sector privado':
+                case 'FLUJO VIRTUAL':
                     return {
-                pane: 'pane_AtlasEscolar_1',
-                radius: 2.0000000000000004,
-                stroke: false,
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(220,44,37,1.0)',
+                pane: 'pane_Cuencahidrogrfica_1',
+                opacity: 1,
+                color: 'rgba(41,121,185,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 3.0,
+                fillOpacity: 0,
                 interactive: true,
             }
                     break;
-                case 'Escuelas de arte del sector p�blico':
+                case 'INTERMITENTE':
                     return {
-                pane: 'pane_AtlasEscolar_1',
-                radius: 2.0000000000000004,
-                stroke: false,
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(225,62,45,1.0)',
+                pane: 'pane_Cuencahidrogrfica_1',
+                opacity: 1,
+                color: 'rgba(115,178,216,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 3.0,
+                fillOpacity: 0,
                 interactive: true,
             }
                     break;
-                case 'Escuelas de computaci�n del sector privado':
+                case 'PERENNE':
                     return {
-                pane: 'pane_AtlasEscolar_1',
-                radius: 2.0000000000000004,
-                stroke: false,
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(229,81,54,1.0)',
-                interactive: true,
-            }
-                    break;
-                case 'Escuelas de computaci�n del sector p�blico':
-                    return {
-                pane: 'pane_AtlasEscolar_1',
-                radius: 2.0000000000000004,
-                stroke: false,
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(234,100,63,1.0)',
-                interactive: true,
-            }
-                    break;
-                case 'Escuelas de deporte del sector privado':
-                    return {
-                pane: 'pane_AtlasEscolar_1',
-                radius: 2.0000000000000004,
-                stroke: false,
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(239,118,71,1.0)',
-                interactive: true,
-            }
-                    break;
-                case 'Escuelas de deporte del sector p�blico':
-                    return {
-                pane: 'pane_AtlasEscolar_1',
-                radius: 2.0000000000000004,
-                stroke: false,
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(244,137,80,1.0)',
-                interactive: true,
-            }
-                    break;
-                case 'Escuelas de educaci�n media superior del sector privado':
-                    return {
-                pane: 'pane_AtlasEscolar_1',
-                radius: 2.0000000000000004,
-                stroke: false,
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(248,155,88,1.0)',
-                interactive: true,
-            }
-                    break;
-                case 'Escuelas de educaci�n media superior del sector p�blico':
-                    return {
-                pane: 'pane_AtlasEscolar_1',
-                radius: 2.0000000000000004,
-                stroke: false,
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(253,174,97,1.0)',
-                interactive: true,
-            }
-                    break;
-                case 'Escuelas de educaci�n media t�cnica terminal del sector privado':
-                    return {
-                pane: 'pane_AtlasEscolar_1',
-                radius: 2.0000000000000004,
-                stroke: false,
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(253,184,109,1.0)',
-                interactive: true,
-            }
-                    break;
-                case 'Escuelas de educaci�n media t�cnica terminal del sector p�blico':
-                    return {
-                pane: 'pane_AtlasEscolar_1',
-                radius: 2.0000000000000004,
-                stroke: false,
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(254,194,121,1.0)',
-                interactive: true,
-            }
-                    break;
-                case 'Escuelas de educaci�n preescolar del sector privado':
-                    return {
-                pane: 'pane_AtlasEscolar_1',
-                radius: 2.0000000000000004,
-                stroke: false,
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(254,204,132,1.0)',
-                interactive: true,
-            }
-                    break;
-                case 'Escuelas de educaci�n preescolar del sector p�blico':
-                    return {
-                pane: 'pane_AtlasEscolar_1',
-                radius: 2.0000000000000004,
-                stroke: false,
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(254,215,144,1.0)',
-                interactive: true,
-            }
-                    break;
-                case 'Escuelas de educaci�n primaria del sector privado':
-                    return {
-                pane: 'pane_AtlasEscolar_1',
-                radius: 2.0000000000000004,
-                stroke: false,
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(254,225,156,1.0)',
-                interactive: true,
-            }
-                    break;
-                case 'Escuelas de educaci�n primaria del sector p�blico':
-                    return {
-                pane: 'pane_AtlasEscolar_1',
-                radius: 2.0000000000000004,
-                stroke: false,
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(255,235,168,1.0)',
-                interactive: true,
-            }
-                    break;
-                case 'Escuelas de educaci�n secundaria general del sector privado':
-                    return {
-                pane: 'pane_AtlasEscolar_1',
-                radius: 2.0000000000000004,
-                stroke: false,
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(255,245,179,1.0)',
-                interactive: true,
-            }
-                    break;
-                case 'Escuelas de educaci�n secundaria general del sector p�blico':
-                    return {
-                pane: 'pane_AtlasEscolar_1',
-                radius: 2.0000000000000004,
-                stroke: false,
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(255,255,191,1.0)',
-                interactive: true,
-            }
-                    break;
-                case 'Escuelas de educaci�n secundaria t�cnica del sector privado':
-                    return {
-                pane: 'pane_AtlasEscolar_1',
-                radius: 2.0000000000000004,
-                stroke: false,
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(245,251,188,1.0)',
-                interactive: true,
-            }
-                    break;
-                case 'Escuelas de educaci�n secundaria t�cnica del sector p�blico':
-                    return {
-                pane: 'pane_AtlasEscolar_1',
-                radius: 2.0000000000000004,
-                stroke: false,
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(234,247,184,1.0)',
-                interactive: true,
-            }
-                    break;
-                case 'Escuelas de educaci�n superior del sector privado':
-                    return {
-                pane: 'pane_AtlasEscolar_1',
-                radius: 2.0000000000000004,
-                stroke: false,
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(224,242,181,1.0)',
-                interactive: true,
-            }
-                    break;
-                case 'Escuelas de educaci�n superior del sector p�blico':
-                    return {
-                pane: 'pane_AtlasEscolar_1',
-                radius: 2.0000000000000004,
-                stroke: false,
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(213,238,178,1.0)',
-                interactive: true,
-            }
-                    break;
-                case 'Escuelas de educaci�n t�cnica superior del sector privado':
-                    return {
-                pane: 'pane_AtlasEscolar_1',
-                radius: 2.0000000000000004,
-                stroke: false,
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(203,234,174,1.0)',
-                interactive: true,
-            }
-                    break;
-                case 'Escuelas de educaci�n t�cnica superior del sector p�blico':
-                    return {
-                pane: 'pane_AtlasEscolar_1',
-                radius: 2.0000000000000004,
-                stroke: false,
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(192,230,171,1.0)',
-                interactive: true,
-            }
-                    break;
-                case 'Escuelas de idiomas del sector privado':
-                    return {
-                pane: 'pane_AtlasEscolar_1',
-                radius: 2.0000000000000004,
-                stroke: false,
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(181,225,167,1.0)',
-                interactive: true,
-            }
-                    break;
-                case 'Escuelas de idiomas del sector p�blico':
-                    return {
-                pane: 'pane_AtlasEscolar_1',
-                radius: 2.0000000000000004,
-                stroke: false,
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(171,221,164,1.0)',
-                interactive: true,
-            }
-                    break;
-                case 'Escuelas del sector privado de educaci�n para necesidades especiales':
-                    return {
-                pane: 'pane_AtlasEscolar_1',
-                radius: 2.0000000000000004,
-                stroke: false,
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(155,210,167,1.0)',
-                interactive: true,
-            }
-                    break;
-                case 'Escuelas del sector privado dedicadas a la ense�anza de oficios':
-                    return {
-                pane: 'pane_AtlasEscolar_1',
-                radius: 2.0000000000000004,
-                stroke: false,
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(139,199,170,1.0)',
-                interactive: true,
-            }
-                    break;
-                case 'Escuelas del sector privado que combinan diversos niveles de educaci�n':
-                    return {
-                pane: 'pane_AtlasEscolar_1',
-                radius: 2.0000000000000004,
-                stroke: false,
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(123,187,172,1.0)',
-                interactive: true,
-            }
-                    break;
-                case 'Escuelas del sector p�blico de educaci�n para necesidades especiales':
-                    return {
-                pane: 'pane_AtlasEscolar_1',
-                radius: 2.0000000000000004,
-                stroke: false,
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(107,176,175,1.0)',
-                interactive: true,
-            }
-                    break;
-                case 'Escuelas del sector p�blico dedicadas a la ense�anza de oficios':
-                    return {
-                pane: 'pane_AtlasEscolar_1',
-                radius: 2.0000000000000004,
-                stroke: false,
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(91,165,178,1.0)',
-                interactive: true,
-            }
-                    break;
-                case 'Escuelas del sector p�blico que combinan diversos niveles de educaci�n':
-                    return {
-                pane: 'pane_AtlasEscolar_1',
-                radius: 2.0000000000000004,
-                stroke: false,
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(75,154,180,1.0)',
-                interactive: true,
-            }
-                    break;
-                case 'Escuelas para la capacitaci�n de ejecutivos del sector privado':
-                    return {
-                pane: 'pane_AtlasEscolar_1',
-                radius: 2.0000000000000004,
-                stroke: false,
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(59,142,183,1.0)',
+                pane: 'pane_Cuencahidrogrfica_1',
+                opacity: 1,
+                color: 'rgba(200,220,240,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 2.0,
+                fillOpacity: 0,
                 interactive: true,
             }
                     break;
                 default:
                     return {
-                pane: 'pane_AtlasEscolar_1',
-                radius: 2.0000000000000004,
-                stroke: false,
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(43,131,186,1.0)',
+                pane: 'pane_Cuencahidrogrfica_1',
+                opacity: 1,
+                color: 'rgba(247,251,255,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
                 interactive: true,
             }
                     break;
             }
         }
-        map.createPane('pane_AtlasEscolar_1');
-        map.getPane('pane_AtlasEscolar_1').style.zIndex = 401;
-        map.getPane('pane_AtlasEscolar_1').style['mix-blend-mode'] = 'normal';
-        var layer_AtlasEscolar_1 = new L.geoJson(json_AtlasEscolar_1, {
+        map.createPane('pane_Cuencahidrogrfica_1');
+        map.getPane('pane_Cuencahidrogrfica_1').style.zIndex = 401;
+        map.getPane('pane_Cuencahidrogrfica_1').style['mix-blend-mode'] = 'normal';
+        var layer_Cuencahidrogrfica_1 = new L.geoJson(json_Cuencahidrogrfica_1, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_AtlasEscolar_1',
-            layerName: 'layer_AtlasEscolar_1',
-            pane: 'pane_AtlasEscolar_1',
-            onEachFeature: pop_AtlasEscolar_1,
-            pointToLayer: function (feature, latlng) {
-                var context = {
-                    feature: feature,
-                    variables: {}
-                };
-                return L.circleMarker(latlng, style_AtlasEscolar_1_0(feature));
-            },
+            dataVar: 'json_Cuencahidrogrfica_1',
+            layerName: 'layer_Cuencahidrogrfica_1',
+            pane: 'pane_Cuencahidrogrfica_1',
+            onEachFeature: pop_Cuencahidrogrfica_1,
+            style: style_Cuencahidrogrfica_1_0,
         });
-        bounds_group.addLayer(layer_AtlasEscolar_1);
-        map.addLayer(layer_AtlasEscolar_1);
+        bounds_group.addLayer(layer_Cuencahidrogrfica_1);
+        map.addLayer(layer_Cuencahidrogrfica_1);
         var osmGeocoder = new L.Control.Geocoder({
             collapsed: true,
             position: 'topleft',
@@ -703,8 +349,8 @@
         document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
         .title += 'Search for a place';
         var overlaysTree = [
-        {label: '<b>Escuelas</b>',  selectAllCheckbox: true, children: [
-            {label: 'Atlas Escolar<br /><table><tr><td style="text-align: center;"><img src="legend/AtlasEscolar_1_Escuelascomercialesysecretarialesdelsectorprivado0.png" /></td><td>Escuelas comerciales y secretariales del sector privado</td></tr><tr><td style="text-align: center;"><img src="legend/AtlasEscolar_1_Escuelasdeartedelsectorprivado1.png" /></td><td>Escuelas de arte del sector privado</td></tr><tr><td style="text-align: center;"><img src="legend/AtlasEscolar_1_Escuelasdeartedelsectorpblico2.png" /></td><td>Escuelas de arte del sector p�blico</td></tr><tr><td style="text-align: center;"><img src="legend/AtlasEscolar_1_Escuelasdecomputacindelsectorprivado3.png" /></td><td>Escuelas de computaci�n del sector privado</td></tr><tr><td style="text-align: center;"><img src="legend/AtlasEscolar_1_Escuelasdecomputacindelsectorpblico4.png" /></td><td>Escuelas de computaci�n del sector p�blico</td></tr><tr><td style="text-align: center;"><img src="legend/AtlasEscolar_1_Escuelasdedeportedelsectorprivado5.png" /></td><td>Escuelas de deporte del sector privado</td></tr><tr><td style="text-align: center;"><img src="legend/AtlasEscolar_1_Escuelasdedeportedelsectorpblico6.png" /></td><td>Escuelas de deporte del sector p�blico</td></tr><tr><td style="text-align: center;"><img src="legend/AtlasEscolar_1_Escuelasdeeducacinmediasuperiordelsectorprivado7.png" /></td><td>Escuelas de educaci�n media superior del sector privado</td></tr><tr><td style="text-align: center;"><img src="legend/AtlasEscolar_1_Escuelasdeeducacinmediasuperiordelsectorpblico8.png" /></td><td>Escuelas de educaci�n media superior del sector p�blico</td></tr><tr><td style="text-align: center;"><img src="legend/AtlasEscolar_1_Escuelasdeeducacinmediatcnicaterminaldelsectorprivado9.png" /></td><td>Escuelas de educaci�n media t�cnica terminal del sector privado</td></tr><tr><td style="text-align: center;"><img src="legend/AtlasEscolar_1_Escuelasdeeducacinmediatcnicaterminaldelsectorpblico10.png" /></td><td>Escuelas de educaci�n media t�cnica terminal del sector p�blico</td></tr><tr><td style="text-align: center;"><img src="legend/AtlasEscolar_1_Escuelasdeeducacinpreescolardelsectorprivado11.png" /></td><td>Escuelas de educaci�n preescolar del sector privado</td></tr><tr><td style="text-align: center;"><img src="legend/AtlasEscolar_1_Escuelasdeeducacinpreescolardelsectorpblico12.png" /></td><td>Escuelas de educaci�n preescolar del sector p�blico</td></tr><tr><td style="text-align: center;"><img src="legend/AtlasEscolar_1_Escuelasdeeducacinprimariadelsectorprivado13.png" /></td><td>Escuelas de educaci�n primaria del sector privado</td></tr><tr><td style="text-align: center;"><img src="legend/AtlasEscolar_1_Escuelasdeeducacinprimariadelsectorpblico14.png" /></td><td>Escuelas de educaci�n primaria del sector p�blico</td></tr><tr><td style="text-align: center;"><img src="legend/AtlasEscolar_1_Escuelasdeeducacinsecundariageneraldelsectorprivado15.png" /></td><td>Escuelas de educaci�n secundaria general del sector privado</td></tr><tr><td style="text-align: center;"><img src="legend/AtlasEscolar_1_Escuelasdeeducacinsecundariageneraldelsectorpblico16.png" /></td><td>Escuelas de educaci�n secundaria general del sector p�blico</td></tr><tr><td style="text-align: center;"><img src="legend/AtlasEscolar_1_Escuelasdeeducacinsecundariatcnicadelsectorprivado17.png" /></td><td>Escuelas de educaci�n secundaria t�cnica del sector privado</td></tr><tr><td style="text-align: center;"><img src="legend/AtlasEscolar_1_Escuelasdeeducacinsecundariatcnicadelsectorpblico18.png" /></td><td>Escuelas de educaci�n secundaria t�cnica del sector p�blico</td></tr><tr><td style="text-align: center;"><img src="legend/AtlasEscolar_1_Escuelasdeeducacinsuperiordelsectorprivado19.png" /></td><td>Escuelas de educaci�n superior del sector privado</td></tr><tr><td style="text-align: center;"><img src="legend/AtlasEscolar_1_Escuelasdeeducacinsuperiordelsectorpblico20.png" /></td><td>Escuelas de educaci�n superior del sector p�blico</td></tr><tr><td style="text-align: center;"><img src="legend/AtlasEscolar_1_Escuelasdeeducacintcnicasuperiordelsectorprivado21.png" /></td><td>Escuelas de educaci�n t�cnica superior del sector privado</td></tr><tr><td style="text-align: center;"><img src="legend/AtlasEscolar_1_Escuelasdeeducacintcnicasuperiordelsectorpblico22.png" /></td><td>Escuelas de educaci�n t�cnica superior del sector p�blico</td></tr><tr><td style="text-align: center;"><img src="legend/AtlasEscolar_1_Escuelasdeidiomasdelsectorprivado23.png" /></td><td>Escuelas de idiomas del sector privado</td></tr><tr><td style="text-align: center;"><img src="legend/AtlasEscolar_1_Escuelasdeidiomasdelsectorpblico24.png" /></td><td>Escuelas de idiomas del sector p�blico</td></tr><tr><td style="text-align: center;"><img src="legend/AtlasEscolar_1_Escuelasdelsectorprivadodeeducacinparanecesidadesespeciales25.png" /></td><td>Escuelas del sector privado de educaci�n para necesidades especiales</td></tr><tr><td style="text-align: center;"><img src="legend/AtlasEscolar_1_Escuelasdelsectorprivadodedicadasalaenseanzadeoficios26.png" /></td><td>Escuelas del sector privado dedicadas a la ense�anza de oficios</td></tr><tr><td style="text-align: center;"><img src="legend/AtlasEscolar_1_Escuelasdelsectorprivadoquecombinandiversosnivelesdeeducacin27.png" /></td><td>Escuelas del sector privado que combinan diversos niveles de educaci�n</td></tr><tr><td style="text-align: center;"><img src="legend/AtlasEscolar_1_Escuelasdelsectorpblicodeeducacinparanecesidadesespeciales28.png" /></td><td>Escuelas del sector p�blico de educaci�n para necesidades especiales</td></tr><tr><td style="text-align: center;"><img src="legend/AtlasEscolar_1_Escuelasdelsectorpblicodedicadasalaenseanzadeoficios29.png" /></td><td>Escuelas del sector p�blico dedicadas a la ense�anza de oficios</td></tr><tr><td style="text-align: center;"><img src="legend/AtlasEscolar_1_Escuelasdelsectorpblicoquecombinandiversosnivelesdeeducacin30.png" /></td><td>Escuelas del sector p�blico que combinan diversos niveles de educaci�n</td></tr><tr><td style="text-align: center;"><img src="legend/AtlasEscolar_1_Escuelasparalacapacitacindeejecutivosdelsectorprivado31.png" /></td><td>Escuelas para la capacitaci�n de ejecutivos del sector privado</td></tr><tr><td style="text-align: center;"><img src="legend/AtlasEscolar_1_32.png" /></td><td></td></tr></table>', layer: layer_AtlasEscolar_1},]},
+        {label: '<b>Hidrografía</b>',  selectAllCheckbox: true, children: [
+            {label: 'Cuenca hidrográfica<br /><table><tr><td style="text-align: center;"><img src="legend/Cuencahidrogrfica_1_ENOPERACION0.png" /></td><td>EN OPERACION</td></tr><tr><td style="text-align: center;"><img src="legend/Cuencahidrogrfica_1_FLUJOVIRTUAL1.png" /></td><td>FLUJO VIRTUAL</td></tr><tr><td style="text-align: center;"><img src="legend/Cuencahidrogrfica_1_INTERMITENTE2.png" /></td><td>INTERMITENTE</td></tr><tr><td style="text-align: center;"><img src="legend/Cuencahidrogrfica_1_PERENNE3.png" /></td><td>PERENNE</td></tr><tr><td style="text-align: center;"><img src="legend/Cuencahidrogrfica_1_4.png" /></td><td></td></tr></table>', layer: layer_Cuencahidrogrfica_1},]},
             {label: "Google Satellite", layer: layer_GoogleSatellite_0, radioGroup: 'bm' },]
         var lay = L.control.layers.tree(null, overlaysTree,{
             //namedToggle: true,
