@@ -2,45 +2,67 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mapoteca | Arquitectura Mexicana</title>
+  <link rel="icon" type="image/png" href="https://static.wixstatic.com/media/2abcf9_dd72a489711648248805a07ac90c3e64~mv2.png/v1/fill/w_150,h_150,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/2abcf9_dd72a489711648248805a07ac90c3e64~mv2.png">
   <style>
     body {
+      margin: 0;
+      padding: 0;
       font-family: Arial, sans-serif;
-      background: #f4f4f4;
+      background-color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
       text-align: center;
-      padding: 80px;
     }
+
+    img.logo {
+      width: 150px;
+      margin-bottom: 20px;
+    }
+
     h1 {
-      color: #333;
+      font-size: 22px;
+      margin-bottom: 30px;
+      color: #000;
     }
-    p {
-      margin: 20px 0;
-      color: #666;
+
+    .buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
     }
-    a {
-      display: inline-block;
-      margin: 10px;
-      padding: 10px 15px;
-      background: #333;
-      color: #fff;
+
+    a.button {
       text-decoration: none;
+      background-color: #000;
+      color: #fff;
+      padding: 12px 20px;
       border-radius: 6px;
+      transition: background 0.3s;
+      font-size: 16px;
     }
-    a:hover {
-      background: #555;
+
+    a.button:hover {
+      background-color: #444;
     }
   </style>
 </head>
 <body>
-  <h1>Mapoteca | Arquitectura Mexicana</h1>
-  <p>Bienvenido a la sección de mapas experimentales.</p>
-  <p>Selecciona un mapa disponible:</p>
-  
-  <a href="mapoteca/eje/">Eje Neovolcánico Transversal</a>
-  <a href="mapoteca/hidrografia/">Hidrografía</a>
-  
-  <p style="margin-top:40px; font-size:0.9em; color:#aaa;">
-    Página en construcción 🚧
-  </p>
+  <!-- Logo -->
+  <img class="logo" src="https://static.wixstatic.com/media/2abcf9_52cc6cb3f51546bcb98d31b065c11332~mv2.png/v1/crop/x_0,y_265,w_800,h_270/fill/w_150,h_50,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/arquitecturamexicana_mx.png" alt="Arquitectura Mexicana">
+
+  <!-- Título -->
+  <h1>Mapoteca de arquitecturamexicana.mx</h1>
+
+  <!-- Botones de mapas -->
+  <div class="buttons">
+    <a class="button" href="TER_01/index.html">Mapa 1 - Eje Neovolcánico Transversal</a>
+    <a class="button" href="TER02_CHVM/index.html">Mapa 2 - Hidrografía</a>
+    <a class="button" href="#">Mapa 3 - Dummy</a>
+  </div>
 </body>
 </html>
