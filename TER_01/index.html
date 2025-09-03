@@ -1,41 +1,33 @@
 <!doctype html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-	  	<title>Eje Neovolcánico Transversal</title>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
-        <meta name="mobile-web-app-capable" content="yes">
-        <meta name="apple-mobile-web-app-capable" content="yes">
-        <link rel="stylesheet" href="css/leaflet.css">
-        <link rel="stylesheet" href="css/L.Control.Layers.Tree.css">
-        <link rel="stylesheet" href="css/qgis2web.css">
-        <link rel="stylesheet" href="css/fontawesome-all.min.css">
-        <style>
-        html, body, #map {
-            width: 100%;
-            height: 100%;
-            padding: 0;
-            margin: 0;
-        }
-        </style>
-        <title></title>
-    </head>
+<html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <title>Arquitectura Mexicana | Proyecto Territorio</title>
-  
+  <meta charset="utf-8">
+  <title>Eje Neovolcánico Transversal</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
   <!-- Favicon -->
   <link rel="icon" type="image/png" 
         href="https://static.wixstatic.com/media/2abcf9_dd72a489711648248805a07ac90c3e64~mv2.png/v1/fill/w_150,h_150,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/2abcf9_dd72a489711648248805a07ac90c3e64~mv2.png">
-  
-  <link rel="stylesheet" href="leaflet.css" />
-  <script src="leaflet.js"></script>
+
+  <!-- CSS de QGIS2WEB -->
+  <link rel="stylesheet" href="css/leaflet.css">
+  <link rel="stylesheet" href="css/L.Control.Layers.Tree.css">
+  <link rel="stylesheet" href="css/qgis2web.css">
+  <link rel="stylesheet" href="css/fontawesome-all.min.css">
+
+  <!-- Estilos del header y subheader -->
   <style>
-    body {
+    html, body {
       margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
       font-family: Arial, Helvetica, sans-serif;
     }
+
     /* Header fijo */
     header {
       position: sticky;
@@ -59,6 +51,7 @@
       font-weight: 600;
       font-size: 14px;
     }
+
     /* Subheader */
     .subheader {
       height: 50px;
@@ -71,7 +64,8 @@
       color: #000;
       border-bottom: 1px solid #e0e0e0;
     }
-    /* Ajustar mapa para que no quede detrás del header */
+
+    /* Ajuste del mapa */
     #map {
       height: calc(100vh - 120px); /* 70px header + 50px subheader */
       width: 100%;
@@ -89,12 +83,10 @@
     <!-- Link -->
     <a href="https://www.arquitecturamexicana.mx/territorio">territorio</a>
   </header>
-	
+  
   <!-- Subheader -->
   <div class="subheader">
     Eje Neovolcánico Transversal
-	  
-
   </div>
 
         <div id="map">
